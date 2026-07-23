@@ -30,7 +30,17 @@ from .media import (
     MediaStatistics,
     MediaTrack,
 )
-from .playback import PlayableSource, QueueEntry
+from .playback import (
+    PlayableSource,
+    PlaybackEvent,
+    PlayerDestroyEvent,
+    PlayerStateChangeEvent,
+    QueueEmptyEvent,
+    QueueEntry,
+    TrackEndEvent,
+    TrackEvent,
+    TrackStartEvent,
+)
 from .query import MediaQuery, MediaResult
 
 __all__: tuple[str, ...] = (
@@ -45,8 +55,15 @@ __all__: tuple[str, ...] = (
     "MediaTrack",
     "MediaType",
     "PlayableSource",
+    "PlaybackEvent",
+    "PlayerDestroyEvent",
     "PlayerState",
+    "PlayerStateChangeEvent",
     "QueryType",
+    "QueueEmptyEvent",
     "QueueEntry",
+    "TrackEndEvent",
     "TrackEndReason",
+    "TrackEvent",
+    "TrackStartEvent",
 )

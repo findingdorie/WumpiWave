@@ -14,10 +14,26 @@ Methods:
 
 from __future__ import annotations
 
+from .events import (
+    PlaybackEvent,
+    PlayerDestroyEvent,
+    PlayerStateChangeEvent,
+    QueueEmptyEvent,
+    TrackEndEvent,
+    TrackEvent,
+    TrackStartEvent,
+)
 from .queue import QueueEntry
 from .source import PlayableSource
 
 __all__: tuple[str, ...] = (
     "PlayableSource",
+    "PlaybackEvent",
+    "PlayerDestroyEvent",
+    "PlayerStateChangeEvent",
+    "QueueEmptyEvent",
     "QueueEntry",
+    "TrackEndEvent",
+    "TrackEvent",
+    "TrackStartEvent",
 )
