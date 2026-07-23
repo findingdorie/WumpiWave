@@ -15,14 +15,6 @@ dependencies = []
 [tool.hatch.build.targets.wheel]
 packages = ["wumpiwave"]
 
-[tool.ty.environment]
-python-version = "3.13"
-
-[tool.ty.src]
-include = [
-    "wumpiwave",
-    "tests",
-]
 exclude = [
     ".venv",
     "build",

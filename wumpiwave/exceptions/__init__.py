@@ -12,6 +12,13 @@ Methods:
 
 from __future__ import annotations
 
+from .backend import (
+    BackendConnectionError,
+    BackendError,
+    BackendNotConnectedError,
+    BackendPlaybackError,
+    BackendUnavailableError,
+)
 from .base import WumpiWaveError
 from .provider import (
     ProviderAlreadyRegisteredError,
@@ -43,8 +50,12 @@ from .resolver import (
     UnsupportedMediaError,
 )
 
-
 __all__: tuple[str, ...] = (
+    "BackendConnectionError",
+    "BackendError",
+    "BackendNotConnectedError",
+    "BackendPlaybackError",
+    "BackendUnavailableError",
     "InvalidQueryError",
     "MediaNotFoundError",
     "ProviderAlreadyRegisteredError",
