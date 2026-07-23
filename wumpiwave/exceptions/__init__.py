@@ -29,6 +29,14 @@ from .query import (
     QueryError,
     UnsupportedQueryError,
 )
+from .resolver import (
+    ResolverAlreadyRegisteredError,
+    ResolverError,
+    ResolverNotFoundError,
+    StreamExpiredError,
+    StreamNotFoundError,
+    UnsupportedMediaError,
+)
 
 __all__: tuple[str, ...] = (
     "InvalidQueryError",
@@ -41,6 +49,12 @@ __all__: tuple[str, ...] = (
     "ProviderRequestError",
     "ProviderUnavailableError",
     "QueryError",
+    "ResolverAlreadyRegisteredError",
+    "ResolverError",
+    "ResolverNotFoundError",
+    "StreamExpiredError",
+    "StreamNotFoundError",
+    "UnsupportedMediaError",
     "UnsupportedQueryError",
     "WumpiWaveError",
 )

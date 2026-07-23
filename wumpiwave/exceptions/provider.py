@@ -102,7 +102,7 @@ class ProviderNotFoundError(ProviderError):
                 The provider name that could not be found.
         """
 
-        super().__init(
+        super().__init__(
             provider_name,
             f"No media provider named {provider_name!r} is registered."
         )
