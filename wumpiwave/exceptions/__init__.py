@@ -14,6 +14,15 @@ Methods:
 from __future__ import annotations
 
 from .base import WumpiWaveError
+from .provider import (
+    ProviderAlreadyRegisteredError,
+    ProviderAuthenticationError,
+    ProviderError,
+    ProviderNotFoundError,
+    ProviderRateLimitError,
+    ProviderRequestError,
+    ProviderUnavailableError,
+)
 from .query import (
     InvalidQueryError,
     MediaNotFoundError,
@@ -24,6 +33,13 @@ from .query import (
 __all__: tuple[str, ...] = (
     "InvalidQueryError",
     "MediaNotFoundError",
+    "ProviderAlreadyRegisteredError",
+    "ProviderAuthenticationError",
+    "ProviderError",
+    "ProviderNotFoundError",
+    "ProviderRateLimitError",
+    "ProviderRequestError",
+    "ProviderUnavailableError",
     "QueryError",
     "UnsupportedQueryError",
     "WumpiWaveError",

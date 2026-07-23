@@ -29,7 +29,7 @@ class WumpiWaveError(Exception):
             Initializes the exception with a human-readable message.
     """
 
-    def __init__(self, message: str) -> None:
+    def __init__(self, provider_name: str, message: str) -> None:
         """
         Initialize a new WumpiWave exception.
 
