@@ -23,11 +23,18 @@ from .enums import (
     QueryType,
     TrackEndReason,
 )
-from .media import MediaArtist, MediaImage, MediaStatistics, MediaTrack
+from .media import (
+    MediaArtist,
+    MediaCollection,
+    MediaImage,
+    MediaStatistics,
+    MediaTrack,
+)
 
 __all__: tuple[str, ...] = (
     "LoopMode",
     "MediaArtist",
+    "MediaCollection",
     "MediaImage",
     "MediaSource",
     "MediaStatistics",
