@@ -14,4 +14,6 @@ Methods:
 
 from __future__ import annotations
 
+from .artist import MediaArtist
+
 __all__: tuple[str, ...] = ()
