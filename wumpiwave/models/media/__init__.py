@@ -15,5 +15,9 @@ Methods:
 from __future__ import annotations
 
 from .artist import MediaArtist
+from .image import MediaImage
 
-__all__: tuple[str, ...] = ()
+__all__: tuple[str, ...] = (
+    "MediaArtist",
+    "MediaImage"
+)
