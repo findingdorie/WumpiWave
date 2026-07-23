@@ -16,5 +16,9 @@ Methods:
 from __future__ import annotations
 
 from .provider import MediaProvider
+from .resolver import StreamResolver
 
-__all__: tuple[str, ...] = ("MediaProvider",)
+__all__: tuple[str, ...] = (
+    "MediaProvider",
+    "StreamResolver",
+)
