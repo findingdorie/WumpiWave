@@ -28,6 +28,12 @@ from .query import (
     QueryError,
     UnsupportedQueryError,
 )
+from .queue import (
+    QueueEmptyError,
+    QueueEntryNotFoundError,
+    QueueError,
+    QueueIndexOutOfRangeError,
+)
 from .resolver import (
     ResolverAlreadyRegisteredError,
     ResolverError,
@@ -36,6 +42,7 @@ from .resolver import (
     StreamNotFoundError,
     UnsupportedMediaError,
 )
+
 
 __all__: tuple[str, ...] = (
     "InvalidQueryError",
@@ -48,6 +55,10 @@ __all__: tuple[str, ...] = (
     "ProviderRequestError",
     "ProviderUnavailableError",
     "QueryError",
+    "QueueEmptyError",
+    "QueueEntryNotFoundError",
+    "QueueError",
+    "QueueIndexOutOfRangeError",
     "ResolverAlreadyRegisteredError",
     "ResolverError",
     "ResolverNotFoundError",
