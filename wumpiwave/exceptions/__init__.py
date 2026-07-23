@@ -20,6 +20,14 @@ from .backend import (
     BackendUnavailableError,
 )
 from .base import WumpiWaveError
+from .player import (
+    InvalidPlayerStateError,
+    NoCurrentTrackError,
+    PlayerAlreadyExistsError,
+    PlayerDestroyedError,
+    PlayerError,
+    PlayerNotFoundError,
+)
 from .provider import (
     ProviderAlreadyRegisteredError,
     ProviderAuthenticationError,
@@ -56,8 +64,14 @@ __all__: tuple[str, ...] = (
     "BackendNotConnectedError",
     "BackendPlaybackError",
     "BackendUnavailableError",
+    "InvalidPlayerStateError",
     "InvalidQueryError",
     "MediaNotFoundError",
+    "NoCurrentTrackError",
+    "PlayerAlreadyExistsError",
+    "PlayerDestroyedError",
+    "PlayerError",
+    "PlayerNotFoundError",
     "ProviderAlreadyRegisteredError",
     "ProviderAuthenticationError",
     "ProviderError",
