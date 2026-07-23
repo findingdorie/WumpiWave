@@ -13,4 +13,8 @@ Methods:
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ()
+from .base import WumpiWaveError
+
+__all__: tuple[str, ...] = (
+    "WumpiWaveError",
+)
