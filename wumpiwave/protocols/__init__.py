@@ -21,6 +21,7 @@ from .dispatcher import (
     EventListener,
     EventListenerDecorator,
 )
+from .player import MediaPlayer
 from .provider import MediaProvider
 from .resolver import StreamResolver
 
@@ -28,6 +29,7 @@ __all__: tuple[str, ...] = (
     "EventDispatcher",
     "EventListener",
     "EventListenerDecorator",
+    "MediaPlayer",
     "MediaProvider",
     "PlaybackBackend",
     "PlaybackCompletionCallback",
