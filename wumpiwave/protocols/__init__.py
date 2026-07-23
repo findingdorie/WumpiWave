@@ -15,4 +15,6 @@ Methods:
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ()
+from .provider import MediaProvider
+
+__all__: tuple[str, ...] = ("MediaProvider",)
