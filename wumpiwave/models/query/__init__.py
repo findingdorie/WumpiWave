@@ -15,7 +15,9 @@ Methods:
 from __future__ import annotations
 
 from .query import MediaQuery
+from .result import MediaResult
 
 __all__: tuple[str, ...] = (
     "MediaQuery",
+    "MediaResult",
 )
