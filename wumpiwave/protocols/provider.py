@@ -16,7 +16,6 @@ from typing import Protocol, runtime_checkable
 
 from ..models import MediaQuery, MediaResult, MediaSource
 
-
 @runtime_checkable
 class MediaProvider(Protocol):
     """Define the interface required for metadata providers.
@@ -104,6 +103,5 @@ class MediaProvider(Protocol):
         """
 
         ...
-
 
 __all__: tuple[str, ...] = ("MediaProvider",)
