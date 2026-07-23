@@ -14,8 +14,10 @@ Methods:
 
 from __future__ import annotations
 
+from .queue import QueueEntry
 from .source import PlayableSource
 
 __all__: tuple[str, ...] = (
     "PlayableSource",
+    "QueueEntry",
 )
