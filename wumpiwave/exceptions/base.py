@@ -1,5 +1,4 @@
-"""
-Base exceptions used throughout WumpiWave.
+"""Base exceptions used throughout WumpiWave.
 
 This module defines the root exception inherited by every public exception
 raised by the WumpiWave library.
@@ -13,9 +12,9 @@ Methods:
 
 from __future__ import annotations
 
+
 class WumpiWaveError(Exception):
-    """
-    Represents the base exception for all WumpiWave errors.
+    """Represents the base exception for all WumpiWave errors.
 
     Catching this exception allows library users to handle every error raised
     intentionally by WumpiWave without catching unrelated Python exceptions.
@@ -29,6 +28,5 @@ class WumpiWaveError(Exception):
 
     __slots__ = ()
 
-__all__: tuple[str, ...] = (
-    "WumpiWaveError",
-)
+
+__all__: tuple[str, ...] = ("WumpiWaveError",)

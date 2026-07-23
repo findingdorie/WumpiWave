@@ -1,0 +1,73 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "wumpiwave"
+version = "0.1.0"
+description = "An asynchronous media player library for Discord applications."
+readme = "README.md"
+requires-python = ">=3.13"
+license = "MIT"
+license-files = ["LICENSE"]
+dependencies = []
+
+[tool.hatch.build.targets.wheel]
+packages = ["wumpiwave"]
+
+[tool.ruff]
+target-version = "py313"
+line-length = 88
+indent-width = 4
+extend-exclude = [
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = [
+    "ANN",
+    "ASYNC",
+    "B",
+    "C4",
+    "D",
+    "DTZ",
+    "E4",
+    "E7",
+    "E9",
+    "F",
+    "I",
+    "N",
+    "PERF",
+    "RUF",
+    "SIM",
+    "UP",
+]
+fixable = ["ALL"]
+
+[tool.ruff.lint.isort]
+known-first-party = ["wumpiwave"]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "auto"
+docstring-code-format = true
+
+[tool.ty.environment]
+python-version = "3.13"
+
+[tool.ty.src]
+include = [
+    "wumpiwave",
+    "tests",
+]
+exclude = [
+    ".venv",
+    "build",
+    "dist",
+]

@@ -1,5 +1,4 @@
-"""
-Queue entry models used throughout WumpiWave.
+"""Queue entry models used throughout WumpiWave.
 
 This module provides the source-independent representation of tracks stored
 inside a media player's playback queue.
@@ -13,16 +12,17 @@ Methods:
 
 from __future__ import annotations
 
-from ..media import MediaTrack
 from dataclasses import dataclass, field
 from datetime import UTC, datetime
 from math import isfinite
 from uuid import UUID, uuid4
 
+from ..media import MediaTrack
+
+
 @dataclass(frozen=True, slots=True)
 class QueueEntry:
-    """
-    Represents a media track stored inside a playback queue.
+    """Represents a media track stored inside a playback queue.
 
     A queue entry separates playback-specific information from the underlying
     media track. This allows the same track to appear multiple times with
@@ -58,20 +58,20 @@ class QueueEntry:
     start_position: float = 0.0
 
     def __post_init__(self) -> None:
-        """
-        Validate the queue entry data.
+        """Validate the queue entry data.
 
         Raises:
             ValueError:
                 The requester identifier is not positive, the request timestamp
                 lacks timezone information, or the start position is invalid.
         """
-
         if self.requester_id is not None and self.requested_at <= 0:
             raise ValueError("The requester identifier must be greater than zero.")
 
         if self.requested_at.tzinfo is None:
-            raise ValueError("The requested timestamp must contain timezone information.")
+            raise ValueError(
+                "The requested timestamp must contain timezone information."
+            )
 
         if not isfinite(self.start_position):
             raise ValueError("The start position must be finite.")
@@ -87,31 +87,26 @@ class QueueEntry:
 
     @property
     def has_requester(self) -> bool:
-        """
-        Return whether the queue entry has an associated requester.
+        """Return whether the queue entry has an associated requester.
 
         Returns:
             ``True`` when a requester identifier is available, otherwise
             ``False``.
         """
-
         return self.requester_id is not None
 
     @property
     def remaining_duration(self) -> float | None:
-        """
-        Return the estimated remaining track duration in seconds.
+        """Return the estimated remaining track duration in seconds.
 
         Returns:
             The remaining duration after subtracting the start position, or
             ``None`` when the track duration is unknown.
         """
-
         if self.track.duration is None:
             return None
 
         return max(0.0, self.track.duration - self.start_position)
 
-__all__: tuple[str, ...] = (
-    "QueueEntry",
-)
+
+__all__: tuple[str, ...] = ("QueueEntry",)

@@ -1,5 +1,4 @@
-"""
-Public data models used throughout WumpiWave.
+"""Public data models used throughout WumpiWave.
 
 This package contains the source-independent models shared by providers,
 resolvers, queues, players, events, and playback backends. External service

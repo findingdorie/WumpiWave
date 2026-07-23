@@ -1,5 +1,4 @@
-"""
-Track data models used throughout WumpiWave.
+"""Track data models used throughout WumpiWave.
 
 This module provides the source-independent representation of individual
 media tracks returned by supported metadata providers.
@@ -13,17 +12,18 @@ Methods:
 
 from __future__ import annotations
 
-from ..enums import MediaSource
 from dataclasses import dataclass, field
 from math import isfinite
+
+from ..enums import MediaSource
 from .artist import MediaArtist
 from .image import MediaImage
 from .statistics import MediaStatistics
 
+
 @dataclass(frozen=True, slots=True)
 class MediaTrack:
-    """
-    Represents an individual media track from a supported provider.
+    """Represents an individual media track from a supported provider.
 
     A media track contains normalized metadata that can be shared between
     providers, resolvers, queues, and players without exposing objects from
@@ -77,19 +77,17 @@ class MediaTrack:
     description: str | None = None
     album_name: str | None = None
     release_date: str | None = None
-    is_live: bool  = False
+    is_live: bool = False
     is_explicit: bool = False
 
     def __post_init__(self) -> None:
-        """
-        Validate the media track metadata.
+        """Validate the media track metadata.
 
         Raises:
             ValueError:
                 The identifier, title, or URL is empty, or the supplied
                 duration is negative or not finite.
         """
-
         if not self.identifier.strip():
             raise ValueError("The track identifier cannot be empty.")
 
@@ -106,6 +104,5 @@ class MediaTrack:
             if self.duration < 0.0:
                 raise ValueError("The track duration cannot be negative.")
 
-__all__: tuple[str, ...] = (
-    "MediaTrack",
-)
+
+__all__: tuple[str, ...] = ("MediaTrack",)

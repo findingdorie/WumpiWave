@@ -1,5 +1,4 @@
-"""
-Artist data models used throughout WumpiWave.
+"""Artist data models used throughout WumpiWave.
 
 This module provides a source-independent representation of an artist,
 creator, channel, or other author associated with a media resource.
@@ -15,10 +14,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True, slots=True)
 class MediaArtist:
-    """
-    Represents an artist, creator, channel, or media author.
+    """Represents an artist, creator, channel, or media author.
 
     The model stores normalized artist information independently from the
     provider that supplied it. Provider-specific objects must not be stored
@@ -40,6 +39,5 @@ class MediaArtist:
     identifier: str | None = None
     url: str | None = None
 
-__all__: tuple[str, ...] = (
-    "MediaArtist",
-)
+
+__all__: tuple[str, ...] = ("MediaArtist",)

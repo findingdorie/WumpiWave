@@ -1,5 +1,4 @@
-"""
-Public media metadata models used throughout WumpiWave.
+"""Public media metadata models used throughout WumpiWave.
 
 This package contains source-independent representations of artists, images,
 statistics, tracks, and media collections. Provider-specific objects from

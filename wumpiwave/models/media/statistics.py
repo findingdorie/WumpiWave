@@ -1,5 +1,4 @@
-"""
-Media statistics models used throughout WumpiWave.
+"""Media statistics models used throughout WumpiWave.
 
 This module provides a source-independent representation of statistics
 associated with tracks, videos, playlists, and other media resources.
@@ -15,10 +14,10 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
+
 @dataclass(frozen=True, slots=True)
 class MediaStatistics:
-    """
-    Represents publicly available statistics for a media resource.
+    """Represents publicly available statistics for a media resource.
 
     All values are optional because supported providers expose different
     statistics. A missing value represents unavailable information and must
@@ -43,6 +42,5 @@ class MediaStatistics:
     comment_count: int | None = None
     popularity_score: int | None = None
 
-__all__: tuple[str, ...] = (
-    "MediaStatistics",
-)
+
+__all__: tuple[str, ...] = ("MediaStatistics",)

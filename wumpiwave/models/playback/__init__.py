@@ -1,5 +1,4 @@
-"""
-Public playback models used throughout WumpiWave.
+"""Public playback models used throughout WumpiWave.
 
 This package contains source-independent models for playable audio sources,
 queue entries, playback events, and other data shared by resolvers, players,

@@ -1,34 +1,24 @@
-from __future__ import annotations
+"""Public interface for the WumpiWave package.
 
-from importlib.metadata import PackageNotFoundError, version
-
-"""
-WumpiWave
-=========
-
-An asynchronous media player library designed for Discord applications.
-
-WumpiWave provides a unified media model, metadata providers, stream
-resolvers, queue management, audio playback, event handling, and Discord
-voice integration.
-
-The public API of the library is exposed directly through this package.
-Library users should normally import classes and functions from
-``wumpiwave`` instead of accessing internal modules.
+WumpiWave is an asynchronous media-player library designed for Discord
+applications. Public classes, models, exceptions, and utilities are exported
+through this package as they become available.
 
 Attributes:
     __version__:
-        The currently installed version of the WumpiWave package.
+        The installed version of the WumpiWave package.
 
 Methods:
     None
 """
 
-try:
-    __version__: str = version("wuumpiwave")
-except PackageNotFoundError:
-    __version__ = "0.1.0.dev0"
+from __future__ import annotations
 
-__all__: tuple[str, ...] = (
-    "__version__",
-)
+from importlib.metadata import PackageNotFoundError, version
+
+try:
+    __version__: str = version("wumpiwave")
+except PackageNotFoundError:
+    __version__ = "0.1.0"
+
+__all__: tuple[str, ...] = ("__version__",)

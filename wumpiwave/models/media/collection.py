@@ -1,5 +1,4 @@
-"""
-Media collection models used throughout WumpiWave.
+"""Media collection models used throughout WumpiWave.
 
 This module provides the source-independent representation of playlists,
 albums, and other ordered collections of media tracks.
@@ -13,16 +12,17 @@ Methods:
 
 from __future__ import annotations
 
-from ..enums import MediaSource, MediaType
 from dataclasses import dataclass
+
+from ..enums import MediaSource, MediaType
 from .artist import MediaArtist
 from .image import MediaImage
 from .track import MediaTrack
 
+
 @dataclass(frozen=True, slots=True)
 class MediaCollection:
-    """
-    Represents an ordered collection of media tracks.
+    """Represents an ordered collection of media tracks.
 
     A media collection contains normalized metadata for playlists and albums
     without exposing provider-specific objects from YouTube, Spotify, or other
@@ -64,15 +64,13 @@ class MediaCollection:
     description: str | None = None
 
     def __post_init__(self) -> None:
-        """
-        Validate the media collection metadata.
+        """Validate the media collection metadata.
 
         Raises:
             ValueError:
                 The identifier, title, or URL is empty, or the supplied media
                 type does not represent a collection.
         """
-
         if not self.identifier.strip():
             raise ValueError("The collection identifier cannot be empty.")
 
@@ -85,6 +83,5 @@ class MediaCollection:
         if self.media_type is MediaType.TRACK:
             raise ValueError("A media collection cannot use the track media type.")
 
-__all__: tuple[str, ...] = (
-    "MediaCollection",
-)
+
+__all__: tuple[str, ...] = ("MediaCollection",)

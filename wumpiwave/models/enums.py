@@ -1,5 +1,4 @@
-"""
-Enumerations shared across the WumpiWave media system.
+"""Enumerations shared across the WumpiWave media system.
 
 This module defines stable string-based values used by media models, queries,
 queues, playback states, loop behavior, and track lifecycle events.
@@ -15,10 +14,10 @@ from __future__ import annotations
 
 from enum import StrEnum, unique
 
+
 @unique
 class MediaSource(StrEnum):
-    """
-    Represents the original platform or source of a media item.
+    """Represents the original platform or source of a media item.
 
     Attributes:
         - YOUTUBE:
@@ -39,10 +38,10 @@ class MediaSource(StrEnum):
     HTTP = "http"
     UNKNOWN = "unknown"
 
+
 @unique
 class MediaType(StrEnum):
-    """
-    Represents the type of a media resource.
+    """Represents the type of a media resource.
 
     Attributes:
         - TRACK:
@@ -60,10 +59,10 @@ class MediaType(StrEnum):
     PLAYLIST = "playlist"
     ALBUM = "album"
 
+
 @unique
 class QueryType(StrEnum):
-    """
-    Represents the format of a submitted media query.
+    """Represents the format of a submitted media query.
 
     Attributes:
         - SEARCH:
@@ -78,10 +77,10 @@ class QueryType(StrEnum):
     SEARCH = "search"
     URL = "url"
 
+
 @unique
 class LoopMode(StrEnum):
-    """
-    Represents the active playback loop behavior.
+    """Represents the active playback loop behavior.
 
     Attributes:
         - OFF:
@@ -99,10 +98,10 @@ class LoopMode(StrEnum):
     TRACK = "track"
     QUEUE = "queue"
 
+
 @unique
 class PlayerState(StrEnum):
-    """
-    Represents the current lifecycle state of a media player.
+    """Represents the current lifecycle state of a media player.
 
     Attributes:
         - IDLE:
@@ -129,10 +128,10 @@ class PlayerState(StrEnum):
     STOPPED = "stopped"
     DESTROYED = "destroyed"
 
+
 @unique
 class TrackEndReason(StrEnum):
-    """
-    Represents the reason why playback of a track ended.
+    """Represents the reason why playback of a track ended.
 
     Attributes:
         - FINISHED:
@@ -156,11 +155,12 @@ class TrackEndReason(StrEnum):
     REPLACED = "replaced"
     ERROR = "error"
 
+
 __all__: tuple[str, ...] = (
     "LoopMode",
     "MediaSource",
     "MediaType",
     "PlayerState",
     "QueryType",
-    "TrackEndReason"
+    "TrackEndReason",
 )
