@@ -14,4 +14,8 @@ Methods:
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ()
+from .query import MediaQuery
+
+__all__: tuple[str, ...] = (
+    "MediaQuery",
+)

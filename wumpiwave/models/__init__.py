@@ -30,12 +30,14 @@ from .media import (
     MediaStatistics,
     MediaTrack,
 )
+from .query import MediaQuery
 
 __all__: tuple[str, ...] = (
     "LoopMode",
     "MediaArtist",
     "MediaCollection",
     "MediaImage",
+    "MediaQuery",
     "MediaSource",
     "MediaStatistics",
     "MediaTrack",
