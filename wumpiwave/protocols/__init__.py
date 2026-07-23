@@ -33,5 +33,5 @@ __all__: tuple[str, ...] = (
     "MediaProvider",
     "PlaybackBackend",
     "PlaybackCompletionCallback",
-    "StreamResolver",
+    "StreamResolver"
 )
