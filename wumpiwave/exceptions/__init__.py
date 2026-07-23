@@ -14,7 +14,17 @@ Methods:
 from __future__ import annotations
 
 from .base import WumpiWaveError
+from .query import (
+    InvalidQueryError,
+    MediaNotFoundError,
+    QueryError,
+    UnsupportedQueryError,
+)
 
 __all__: tuple[str, ...] = (
+    "InvalidQueryError",
+    "MediaNotFoundError",
+    "QueryError",
+    "UnsupportedQueryError",
     "WumpiWaveError",
 )
