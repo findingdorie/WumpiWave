@@ -20,7 +20,6 @@ from ..models import PlayableSource
 
 type PlaybackCompletionCallback = Callable[[Exception | None], None]
 
-
 @runtime_checkable
 class PlaybackBackend(Protocol):
     """Define the interface required for playback backends.
