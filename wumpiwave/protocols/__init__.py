@@ -16,12 +16,20 @@ Methods:
 from __future__ import annotations
 
 from .backend import PlaybackBackend, PlaybackCompletionCallback
+from .dispatcher import (
+    EventDispatcher,
+    EventListener,
+    EventListenerDecorator,
+)
 from .provider import MediaProvider
 from .resolver import StreamResolver
 
 __all__: tuple[str, ...] = (
+    "EventDispatcher",
+    "EventListener",
+    "EventListenerDecorator",
     "MediaProvider",
     "PlaybackBackend",
     "PlaybackCompletionCallback",
-    "StreamResolver"
+    "StreamResolver",
 )
