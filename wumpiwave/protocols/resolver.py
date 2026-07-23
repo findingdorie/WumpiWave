@@ -93,5 +93,4 @@ class StreamResolver(Protocol):
 
         ...
 
-
 __all__: tuple[str, ...] = ("StreamResolver",)

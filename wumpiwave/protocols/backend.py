@@ -170,7 +170,6 @@ class PlaybackBackend(Protocol):
 
         ...
 
-
 __all__: tuple[str, ...] = (
     "PlaybackBackend",
     "PlaybackCompletionCallback"
