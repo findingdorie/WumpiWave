@@ -16,5 +16,9 @@ Methods:
 from __future__ import annotations
 
 from .base import BaseStreamResolver
+from .youtube import YouTubeResolver
 
-__all__: tuple[str, ...] = ("BaseStreamResolver",)
+__all__: tuple[str, ...] = (
+    "BaseStreamResolver",
+    "YouTubeResolver",
+)

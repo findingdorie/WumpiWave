@@ -12,6 +12,7 @@ license = "MIT"
 license-files = ["LICENSE"]
 dependencies = [
     "aiohttp>=3.13,<4",
+    "yt-dlp[default]"
 ]
 
 [tool.hatch.build.targets.wheel]
