@@ -34,7 +34,6 @@ from .models import (
 
 type YouTubeSearchResource = Literal["channel", "playlist", "video"]
 
-
 class YouTubeClient:
     """Provide asynchronous access to the YouTube Data API.
 
