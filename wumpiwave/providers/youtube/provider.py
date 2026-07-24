@@ -13,7 +13,6 @@ Methods:
 from __future__ import annotations
 
 from collections.abc import Iterable
-from functools import partial
 from urllib.parse import parse_qs, urlsplit
 
 from ...exceptions import MediaNotFoundError, UnsupportedQueryError
