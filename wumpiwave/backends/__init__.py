@@ -16,4 +16,6 @@ Methods:
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ()
+from .base import BasePlaybackBackend
+
+__all__: tuple[str, ...] = ("BasePlaybackBackend",)
