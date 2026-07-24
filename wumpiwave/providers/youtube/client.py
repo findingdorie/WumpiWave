@@ -195,8 +195,7 @@ class YouTubeClient:
 
         return self._request_timeout.total or 0.0
 
-    async def fetch_videos(self, video_identifiers: Iterable[str], *,
-                           include_statistics: bool = True) -> _YouTubeVideoListResponsePayload:
+    async def fetch_videos(self, video_identifiers: Iterable[str], *, include_statistics: bool = True) -> _YouTubeVideoListResponsePayload:
         """Retrieve metadata for one or more YouTube videos.
 
         Args:
