@@ -12,4 +12,9 @@ Methods:
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ()
+from .client import YouTubeClient, YouTubeSearchResource
+
+__all__: tuple[str, ...] = (
+    "YouTubeClient",
+    "YouTubeSearchResource"
+)
