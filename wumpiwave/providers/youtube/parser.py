@@ -15,7 +15,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 from html import unescape
-from typing import Final
+from typing import Final, Never
 
 from aiohttp import payload
 
@@ -457,10 +457,11 @@ class YouTubeParser:
 
         try:
             parsed_value: int = int(normalized_value)
-        except ValueError:
-            cls._raise_invalid_payload(
-                f"The YouTube {field_name} is not a valid integer."
-            )
+        except ValueError as exception:
+            raise ProviderRequestError(
+                provider_name=cls._PROVIDER_NAME,
+                reason=f"The YouTube {field_name} is not a valid integer.",
+            ) from exception
 
         if parsed_value < 0:
             cls._raise_invalid_payload(
@@ -513,7 +514,7 @@ class YouTubeParser:
         return normalized_value or None
 
     @classmethod
-    def _raise_invalid_payload(cls, reason: str) -> None:
+    def _raise_invalid_payload(cls, reason: str) -> Never:
         """Raise an exception for an invalid YouTube response payload.
 
         Args:
