@@ -16,11 +16,13 @@ Methods:
 from __future__ import annotations
 
 from .base import BaseStreamResolver
+from .http import HTTPResolver
 from .spotify import SpotifyResolver
 from .youtube import YouTubeResolver
 
 __all__: tuple[str, ...] = (
     "BaseStreamResolver",
+    "HTTPResolver",
     "SpotifyResolver",
     "YouTubeResolver",
 )
