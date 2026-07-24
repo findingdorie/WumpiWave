@@ -29,7 +29,6 @@ from ..base import BaseMediaProvider
 from .client import YouTubeClient
 from .parser import YouTubeParser
 
-
 class YouTubeProvider(BaseMediaProvider):
     """Retrieve and normalize metadata from YouTube.
 
