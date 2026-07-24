@@ -312,7 +312,7 @@ class YouTubeResolver(BaseStreamResolver):
             Every valid HTTP header required to access the stream.
         """
 
-        raw_hreaders: object = information.fet("http_headers")
+        raw_hreaders: object = information.get("http_headers")
 
         if not isinstance(raw_hreaders, Mapping):
             return {}

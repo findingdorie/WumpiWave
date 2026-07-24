@@ -377,7 +377,7 @@ class SpotifyResolver(BaseStreamResolver):
             if not self._stream_resolver.supports(candidate):
                 continue
 
-            duration_difference: float | None = self.maximum_duration_differene(
+            duration_difference: float | None = self._duration_difference(
                 track,
                 candidate
             )

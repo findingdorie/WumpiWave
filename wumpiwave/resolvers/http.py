@@ -161,7 +161,7 @@ class HTTPResolver(BaseStreamResolver):
             seekable=self._seekable and not track.is_live
         )
 
-    @str
+    @staticmethod
     def _normalize_headers(self, headers: Mapping[str, str]) -> dict[str, str]:
         """Normalize and validate configured HTTP headers.
 
