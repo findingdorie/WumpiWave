@@ -13,4 +13,9 @@ Methods:
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ()
+from .client import SpotifyClient, SpotifySearchResource
+
+__all__: tuple[str, ...] = (
+    "SpotifyClient",
+    "SpotifySearchResource",
+)
