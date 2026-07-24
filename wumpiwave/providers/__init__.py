@@ -16,13 +16,14 @@ Methods:
 from __future__ import annotations
 
 from .base import BaseMediaProvider
-from .spotify import SpotifyClient, SpotifyParser
+from .spotify import SpotifyClient, SpotifyParser, SpotifyProvider
 from .youtube import YouTubeClient, YouTubeParser, YouTubeProvider
 
 __all__: tuple[str, ...] = (
     "BaseMediaProvider",
     "SpotifyClient",
     "SpotifyParser",
+    "SpotifyProvider",
     "YouTubeClient",
     "YouTubeParser",
     "YouTubeProvider",
