@@ -38,7 +38,7 @@ class InvalidQueryError(QueryError):
             The reason why the query value is considered invalid.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the invalid query and reason.
     """
 
@@ -69,7 +69,7 @@ class UnsupportedQueryError(QueryError):
             The unsupported URL or search value.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the unsupported query value.
     """
 
@@ -98,7 +98,7 @@ class MediaNotFoundError(QueryError):
             The URL or search value that produced no media result.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the unsuccessful query value.
     """
 

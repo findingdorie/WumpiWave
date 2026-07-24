@@ -24,7 +24,7 @@ class ProviderError(WumpiWaveError):
             The public name of the provider associated with the error.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the provider name and message.
     """
 
@@ -53,7 +53,7 @@ class ProviderAlreadyRegisteredError(ProviderError):
             The name already registered with the media client.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the duplicate provider name.
     """
 
@@ -80,7 +80,7 @@ class ProviderNotFoundError(ProviderError):
             The provider name that could not be found.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the missing provider name.
     """
 
@@ -108,7 +108,7 @@ class ProviderAuthenticationError(ProviderError):
             The provider-supplied authentication failure reason, when available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the provider and optional reason.
     """
 
@@ -148,7 +148,7 @@ class ProviderRequestError(ProviderError):
             The provider-supplied failure reason, when available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with request failure details.
     """
 
@@ -196,7 +196,7 @@ class ProviderRateLimitError(ProviderError):
             The recommended delay in seconds before retrying, when available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with optional retry information.
     """
 
@@ -235,7 +235,7 @@ class ProviderUnavailableError(QueryError):
             The provider-supplied availability failure reason, when available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the provider and optional reason.
     """
 

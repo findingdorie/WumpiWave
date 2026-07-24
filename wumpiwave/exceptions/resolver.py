@@ -25,7 +25,7 @@ class ResolverError(WumpiWaveError):
             available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with a message and optional resolver name.
     """
 
@@ -55,7 +55,7 @@ class ResolverAlreadyRegisteredError(ResolverError):
             The resolver name already registered with the media client.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the duplicate resolver name.
     """
 
@@ -82,7 +82,7 @@ class ResolverNotFoundError(ResolverError):
             The resolver name that could not be found.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the missing resolver name.
     """
 
@@ -111,7 +111,7 @@ class UnsupportedMediaError(ResolverError):
             The media track unsupported by the registered resolvers.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the unsupported media track.
     """
 
@@ -143,7 +143,7 @@ class StreamNotFoundError(ResolverError):
             The media track for which no stream was found.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the resolver and media track.
     """
 
@@ -181,7 +181,7 @@ class StreamExpiredError(ResolverError):
             The playable source containing the expired stream URL.
 
     Methods:
-        __init__:
+        __init__.py:
             Initializes the exception with the expired playable source.
     """
 

@@ -23,7 +23,7 @@ class BackendError(WumpiWaveError):
             The public name of the playback backend associated with the error.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the backend name and message.
     """
 
@@ -67,7 +67,7 @@ class BackendConnectionError(BackendError):
             The connection failure reason, when available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the backend and optional reason.
     """
 
@@ -111,7 +111,7 @@ class BackendNotConnectedError(BackendError):
             The name of the backend that is not connected.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the disconnected backend name.
     """
 
@@ -142,7 +142,7 @@ class BackendPlaybackError(BackendError):
             The operation failure reason, when available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with playback operation details.
     """
 
@@ -209,7 +209,7 @@ class BackendUnavailableError(BackendError):
             The availability failure reason, when available.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the backend and optional reason.
     """
 

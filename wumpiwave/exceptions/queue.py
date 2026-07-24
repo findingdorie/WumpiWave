@@ -39,7 +39,7 @@ class QueueEmptyError(QueueError):
         None
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with a descriptive error message.
     """
 
@@ -60,7 +60,7 @@ class QueueIndexOutOfRangeError(QueueError):
             The number of entries available when the operation was attempted.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the invalid index and queue size.
     """
 
@@ -98,7 +98,7 @@ class QueueEntryNotFoundError(QueueError):
             The unique identifier of the requested queue entry.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the missing entry identifier.
     """
 

@@ -36,7 +36,7 @@ class PlayerAlreadyExistsError(PlayerError):
             The unique identifier already assigned to an existing player.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the duplicate player identifier.
     """
 
@@ -73,7 +73,7 @@ class PlayerNotFoundError(PlayerError):
             The unique identifier of the requested player.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the missing player identifier.
     """
 
@@ -114,7 +114,7 @@ class InvalidPlayerStateError(PlayerError):
             The player states in which the operation is permitted.
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with the operation and state information.
     """
 
@@ -173,7 +173,7 @@ class PlayerDestroyedError(PlayerError):
         None
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with a descriptive error message.
     """
 
@@ -194,7 +194,7 @@ class NoCurrentTrackError(PlayerError):
         None
 
     Methods:
-        __init__:
+        __init__.py:
             Initialize the exception with a descriptive error message.
     """
 
