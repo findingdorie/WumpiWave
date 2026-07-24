@@ -15,4 +15,6 @@ Methods:
 
 from __future__ import annotations
 
-__all__: tuple[str, ...] = ()
+from .base import BaseStreamResolver
+
+__all__: tuple[str, ...] = ("BaseStreamResolver",)
