@@ -154,7 +154,7 @@ class YouTubeParser:
         )
 
     @classmethod
-    def parse_video(cls, payloads: Iterable[_YouTubeVideoPayload]) -> tuple[MediaTrack, ...]:
+    def parse_videos(cls, payloads: Iterable[_YouTubeVideoPayload]) -> tuple[MediaTrack, ...]:
         """Convert multiple YouTube video payloads into media tracks.
 
         Args:

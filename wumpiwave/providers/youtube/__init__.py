@@ -14,9 +14,11 @@ from __future__ import annotations
 
 from .client import YouTubeClient, YouTubeSearchResource
 from .parser import YouTubeParser
+from .provider import YouTubeProvider
 
 __all__: tuple[str, ...] = (
     "YouTubeClient",
     "YouTubeParser",
+    "YouTubeProvider",
     "YouTubeSearchResource",
 )
