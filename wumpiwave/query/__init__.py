@@ -13,5 +13,9 @@ Methods:
 from __future__ import annotations
 
 from .matcher import QueryMatcher
+from .parser import QueryParser
 
-__all__: tuple[str, ...] = ("QueryMatcher",)
+__all__: tuple[str, ...] = (
+    "QueryMatcher",
+    "QueryParser",
+)
