@@ -32,12 +32,30 @@ class MediaArtist:
             The public URL leading to the artist or creator profile.
 
     Methods:
-        None
+        __post_init__:
+            Validate the media artist metadata.
     """
 
     name: str
     identifier: str | None = None
     url: str | None = None
+
+    def __post_init__(self) -> None:
+        """Validate the media artist metadata.
+
+        Raises:
+            ValueError:
+                The artist name, identifier, or URL is empty.
+        """
+
+        if not self.name.strip():
+            raise ValueError("The media artist name cannot be empty.")
+
+        if self.identifier is not None and not self.identifier.strip():
+            raise ValueError("The media artist identifier cannot be empty.")
+
+        if self.url is not None and not self.url.strip():
+            raise ValueError("The media artist URL cannot be empty.")
 
 
 __all__: tuple[str, ...] = ("MediaArtist",)
