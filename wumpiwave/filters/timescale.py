@@ -112,8 +112,8 @@ class TimescaleFilter(BaseAudioFilter):
         self._speed = self._validate_multiplier(
             speed,
             field_name="speed",
-            minimum=self._MINIMUM_PITCH,
-            maximum=self._MAXIMUM_PITCH
+            minimum=self._MINIMUM_SPEED,
+            maximum=self._MAXIMUM_SPEED,
         )
         self._pitch = self._validate_multiplier(
             pitch,
@@ -220,7 +220,7 @@ class TimescaleFilter(BaseAudioFilter):
                 The supplied sample rate is not positive.
         """
 
-        self.sample_rate = self._validate_sample_rate(sample_rate)
+        self._sample_rate = self._validate_sample_rate(sample_rate)
         return self
 
     def reset(self) -> Self:
@@ -295,22 +295,28 @@ class TimescaleFilter(BaseAudioFilter):
         remaining_multiplier: float = tempo_multiplier
         tempo_factors: list[float] = []
 
+        while remaining_multiplier > (
+                cls._TEMPO_MAXIMUM + cls._TOLERANCE
+        ):
+            tempo_factors.append(cls._TEMPO_MAXIMUM)
+            remaining_multiplier /= cls._TEMPO_MAXIMUM
+
         while remaining_multiplier < (
-            cls._TEMPO_MINIMUM - cls._TOLERANCE
+                cls._TEMPO_MINIMUM - cls._TOLERANCE
         ):
             tempo_factors.append(cls._TEMPO_MINIMUM)
             remaining_multiplier /= cls._TEMPO_MINIMUM
 
         if not isclose(
-            remaining_multiplier,
-            1.0,
-            rel_tol=0.0,
-            abs_tol=cls._TOLERANCE
+                remaining_multiplier,
+                1.0,
+                rel_tol=0.0,
+                abs_tol=cls._TOLERANCE
         ):
             tempo_factors.append(remaining_multiplier)
 
         return tuple(
-            f"atemp={tempo_factor:.10g}"
+            f"atempo={tempo_factor:.10g}"
             for tempo_factor in tempo_factors
         )
 
@@ -380,4 +386,4 @@ class TimescaleFilter(BaseAudioFilter):
 
         return sample_rate
 
-__alL__: tuple[str, ...] = ("TimescaleFilter",)
+__all__: tuple[str, ...] = ("TimescaleFilter",)
