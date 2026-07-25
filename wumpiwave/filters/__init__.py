@@ -13,5 +13,9 @@ Methods:
 from __future__ import annotations
 
 from .base import BaseAudioFilter
+from .chain import AudioFilterChain
 
-__all__: tuple[str, ...] = ("BaseAudioFilter",)
+__all__: tuple[str, ...] = (
+    "AudioFilterChain",
+    "BaseAudioFilter",
+)
