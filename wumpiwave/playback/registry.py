@@ -339,10 +339,11 @@ class PlayerRegistry:
             ``True`` when a matching player is registered.
         """
 
-        if isinstance(player_identifier, bool):
-            return False
+        if (
 
-        if isinstance(player_identifier, int):
+            isinstance(player_identifier, bool)
+            or not isinstance(player_identifier, int)
+        ):
             return False
 
         return player_identifier in self._players
@@ -414,5 +415,7 @@ class PlayerRegistry:
             int
         ):
             raise TypeError("The media player identifier must be an integer.")
+
+        return player_identifier
 
 __all__: tuple[str, ...] = ("PlayerRegistry",)
