@@ -12,16 +12,10 @@ from wumpiwave.models import PlaybackEvent
 class ExamplePlaybackEvent(PlaybackEvent):
     """Represent a playback event used by dispatcher tests."""
 
-
 class ChildPlaybackEvent(ExamplePlaybackEvent):
     """Represent a specialized playback event used by dispatcher tests."""
 
-
-def create_event[
-    EventT: PlaybackEvent
-](
-    event_type: type[EventT],
-) -> EventT:
+def create_event[EventT: PlaybackEvent](event_type: type[EventT]) -> EventT:
     """Create a mocked playback event with the requested runtime type."""
 
     return Mock(spec=event_type)
