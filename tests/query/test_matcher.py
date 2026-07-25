@@ -32,9 +32,7 @@ class QueryMatcherTestCase(unittest.TestCase):
     def test_rejects_unsupported_url_scheme(self) -> None:
         """Verify that unsupported URL schemes are rejected."""
 
-        self.assertFalse(
-            QueryMatcher.is_url("ftp://example.com/audio.mp3")
-        )
+        self.assertFalse(QueryMatcher.is_url("ftp://example.com/audio.mp3"))
 
     def test_rejects_url_without_hostname(self) -> None:
         """Verify that a URL without a hostname is rejected."""
