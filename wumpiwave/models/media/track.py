@@ -20,7 +20,6 @@ from .artist import MediaArtist
 from .image import MediaImage
 from .statistics import MediaStatistics
 
-
 @dataclass(frozen=True, slots=True)
 class MediaTrack:
     """Represents an individual media track from a supported provider.
@@ -103,6 +102,5 @@ class MediaTrack:
 
             if self.duration < 0.0:
                 raise ValueError("The track duration cannot be negative.")
-
 
 __all__: tuple[str, ...] = ("MediaTrack",)

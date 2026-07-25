@@ -14,7 +14,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-
 @dataclass(frozen=True, slots=True)
 class MediaArtist:
     """Represents an artist, creator, channel, or media author.
@@ -56,6 +55,5 @@ class MediaArtist:
 
         if self.url is not None and not self.url.strip():
             raise ValueError("The media artist URL cannot be empty.")
-
 
 __all__: tuple[str, ...] = ("MediaArtist",)

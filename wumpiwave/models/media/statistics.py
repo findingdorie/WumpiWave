@@ -14,7 +14,6 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 
-
 @dataclass(frozen=True, slots=True)
 class MediaStatistics:
     """Represents publicly available statistics for a media resource.
@@ -41,6 +40,5 @@ class MediaStatistics:
     like_count: int | None = None
     comment_count: int | None = None
     popularity_score: int | None = None
-
 
 __all__: tuple[str, ...] = ("MediaStatistics",)

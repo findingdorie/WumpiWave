@@ -83,5 +83,4 @@ class MediaCollection:
         if self.media_type is MediaType.TRACK:
             raise ValueError("A media collection cannot use the track media type.")
 
-
 __all__: tuple[str, ...] = ("MediaCollection",)
