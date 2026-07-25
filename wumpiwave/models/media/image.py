@@ -39,5 +39,25 @@ class MediaImage:
     width: int | None = None
     height: int | None = None
 
+    def __post_init__(self) -> None:
+        """Validate the media image metadata.
+
+        Raises:
+            ValueError:
+                The image URL is empty or a dimension is not positive.
+        """
+
+        if not self.url.strip():
+            raise ValueError("The media image URL cannot be empty.")
+
+        if self.width is not None and self.width <= 0:
+            raise ValueError(
+                "The media image width must be greater than zero."
+            )
+
+        if self.height is not None and self.height <= 0:
+            raise ValueError(
+                "The media image height must be greater than zero."
+            )
 
 __all__: tuple[str, ...] = ("MediaImage",)
