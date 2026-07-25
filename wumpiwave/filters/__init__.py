@@ -14,8 +14,11 @@ from __future__ import annotations
 
 from .base import BaseAudioFilter
 from .chain import AudioFilterChain
+from .equalizer import EqualizerBand, EqualizerFilter
 
 __all__: tuple[str, ...] = (
     "AudioFilterChain",
     "BaseAudioFilter",
+    "EqualizerBand",
+    "EqualizerFilter",
 )
