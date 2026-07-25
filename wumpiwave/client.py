@@ -17,7 +17,13 @@ from typing import Self
 
 from .events import PlaybackEventDispatcher
 from .exceptions import WumpiWaveError
-from .models import LoopMode, MediaQuery, MediaResult
+from .models import (
+    LoopMode,
+    MediaQuery,
+    MediaResult,
+    MediaSource,
+    QueryType,
+)
 from .playback import PlaybackQueue, PlayerRegistry, WumpiWavePlayer
 from .protocols import EventDispatcher, PlaybackBackend
 from .providers import ProviderRegistry
@@ -44,6 +50,10 @@ class WumpiWaveClient:
             Whether the client has released its resources.
 
     Methods:
+          search:
+            Search for media through a registered metadata provider.
+        fetch:
+            Retrieve media metadata from a supported URL.
         query:
             Route a normalized media query to a metadata provider.
         create_player:
@@ -136,6 +146,99 @@ class WumpiWaveClient:
         """
 
         return self._closed
+
+    async def search(
+            self,
+            value: str,
+            *,
+            source: MediaSource | None = None,
+            limit: int = 10,
+            include_statistics: bool = True
+    ) -> MediaResult:
+        """Search for media through a registered metadata provider.
+
+        Args:
+            value:
+                The text used to search for media.
+            source:
+                The preferred media source, when one should be enforced.
+            limit:
+                The maximum number of tracks returned by the provider.
+            include_statistics:
+                Whether provider statistics should be requested.
+
+        Returns:
+            The media result returned by the selected provider.
+
+        Raises:
+            WumpiWaveError:
+                The client has already been closed.
+            InvalidQueryError:
+                The search value or result limit is invalid.
+            UnsupportedQueryError:
+                No registered provider supports the search.
+            ProviderError:
+                The selected provider could not process the search.
+        """
+
+        return await self.query(
+            MediaQuery(
+                value=value,
+                query_type=QueryType.SEARCH,
+                source=source,
+                limit=limit,
+                include_statistics=include_statistics,
+                include_collections=False
+            )
+        )
+
+    async def fetch(
+            self,
+            url: str,
+            *,
+            source: MediaSource | None = None,
+            limit: int = 100,
+            include_statistics: bool = True,
+            include_collections: bool = True
+    ) -> MediaResult:
+        """Retrieve media metadata from a supported URL.
+
+        Args:
+            url:
+                The YouTube, Spotify, or direct HTTP media URL.
+            source:
+                The expected media source, when one should be enforced.
+            limit:
+                The maximum number of tracks loaded from a collection.
+            include_statistics:
+                Whether provider statistics should be requested.
+            include_collections:
+                Whether playlist and album URLs should be supported.
+
+        Returns:
+            The media result returned by the selected provider.
+
+        Raises:
+            WumpiWaveError:
+                The client has already been closed.
+            InvalidQueryError:
+                The URL or result limit is invalid.
+            UnsupportedQueryError:
+                No registered provider supports the URL.
+            ProviderError:
+                The selected provider could not process the URL.
+        """
+
+        return await self.query(
+            MediaQuery(
+                value=url,
+                query_type=QueryType.URL,
+                source=source,
+                limit=limit,
+                include_statistics=include_statistics,
+                include_collections=include_collections,
+            )
+        )
 
     async def query(self, query: MediaQuery) -> MediaResult:
         """Route a normalized media query to a metadata provider.
