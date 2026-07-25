@@ -1164,7 +1164,7 @@ class SpotifyClient:
         return normalized_market
 
     @staticmethod
-    def _validate_pagination(*, result_limit: int, offset: int, maximum_limit: int, maximum_offset: int | Noen = None) -> None:
+    def _validate_pagination(*, result_limit: int, offset: int, maximum_limit: int, maximum_offset: int | None = None) -> None:
         """Validate Spotify pagination values.
 
         Args:
