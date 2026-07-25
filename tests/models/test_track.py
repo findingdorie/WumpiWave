@@ -14,7 +14,6 @@ from wumpiwave.models import (
     MediaTrack,
 )
 
-
 class MediaTrackTestCase(unittest.TestCase):
     """Test media track creation, defaults, validation, and immutability."""
 
