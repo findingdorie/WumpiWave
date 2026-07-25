@@ -18,9 +18,11 @@ from __future__ import annotations
 from .base import BaseMediaProvider
 from .spotify import SpotifyClient, SpotifyParser, SpotifyProvider
 from .youtube import YouTubeClient, YouTubeParser, YouTubeProvider
+from .http import HTTPProvider
 
 __all__: tuple[str, ...] = (
     "BaseMediaProvider",
+    "HTTPProvider",
     "SpotifyClient",
     "SpotifyParser",
     "SpotifyProvider",
