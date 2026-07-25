@@ -75,7 +75,7 @@ class ExceptionHierarchyTestCase(unittest.TestCase):
 
         errors = (
             QueryError("Query failed."),
-            ProviderError("Provider failed."),
+            ProviderError("WumpiWaveProvider", "Provider failed."),
             ResolverError("Resolver failed."),
             QueueError("Queue failed."),
             BackendError("WumpiWaveBackend", "Backend failed."),
