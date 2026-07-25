@@ -174,7 +174,7 @@ class BaseAudioFilter(ABC):
         """
 
         if not isinstance(enabled, bool):
-            raise TypeError("The audio filter anabled state must be a boolean.")
+            raise TypeError("The audio filter enabled state must be a boolean.")
 
         self._enabled = enabled
         return self
