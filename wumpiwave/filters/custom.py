@@ -67,7 +67,7 @@ class CustomAudioFilter(BaseAudioFilter):
             enabled=enabled
         )
 
-        self._expression = self._map_expression(expression)
+        self._expression = self._normalize_expression(expression)
 
     @property
     def expression(self) -> str:
