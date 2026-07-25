@@ -19,10 +19,12 @@ from .base import BaseMediaProvider
 from .spotify import SpotifyClient, SpotifyParser, SpotifyProvider
 from .youtube import YouTubeClient, YouTubeParser, YouTubeProvider
 from .http import HTTPProvider
+from .registry import ProviderRegistry
 
 __all__: tuple[str, ...] = (
     "BaseMediaProvider",
     "HTTPProvider",
+    "ProviderRegistry",
     "SpotifyClient",
     "SpotifyParser",
     "SpotifyProvider",
