@@ -15,10 +15,14 @@ Methods:
 from __future__ import annotations
 
 from importlib.metadata import PackageNotFoundError, version
+from .client import WumpiWaveClient
 
 try:
     __version__: str = version("wumpiwave")
 except PackageNotFoundError:
     __version__ = "0.1.0"
 
-__all__: tuple[str, ...] = ("__version__",)
+__all__: tuple[str, ...] = (
+    "__version__",
+    "WumpiWaveClient"
+)
