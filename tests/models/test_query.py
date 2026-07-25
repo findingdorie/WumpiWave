@@ -7,7 +7,6 @@ from dataclasses import FrozenInstanceError
 
 from wumpiwave.models import MediaQuery, MediaSource, QueryType
 
-
 class MediaQueryTestCase(unittest.TestCase):
     """Test media query creation, normalization, validation, and immutability."""
 
