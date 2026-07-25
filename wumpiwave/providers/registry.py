@@ -20,11 +20,10 @@ from ..exceptions import (
     ProviderAlreadyRegisteredError,
     ProviderError,
     ProviderNotFoundError,
-    UnsupportedQueryError, provider,
+    UnsupportedQueryError
 )
 from ..models import MediaQuery, MediaResult
 from ..protocols import MediaProvider
-
 
 class ProviderRegistry:
     """Manage metadata providers available to WumpiWave.
@@ -101,7 +100,7 @@ class ProviderRegistry:
 
         self._closed = False
         self._providers = {}
-        self._register_all(providers)
+        self.register_all(providers)
 
     @property
     def closed(self) -> bool:
