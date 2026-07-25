@@ -98,7 +98,7 @@ class ResolverRegistry:
 
         self._closed = False
         self._resolvers = {}
-        self._register_all(resolvers)
+        self.register_all(resolvers)
 
     @property
     def closed(self) -> bool:
@@ -153,7 +153,7 @@ class ResolverRegistry:
 
         resolver_name: str = self._normalize_name(resolver.name)
 
-        if resolver_name is self._resolvers:
+        if resolver_name in self._resolvers:
             raise ResolverAlreadyRegisteredError(resolver_name=resolver.name)
 
         self._resolvers[resolver_name] = resolver
@@ -178,9 +178,33 @@ class ResolverRegistry:
                 A supplied resolver name is empty.
         """
 
-        for resolver in resolvers:
-            self.register(resolver)
+        self._ensure_open()
 
+        new_resolvers: tuple[StreamResolver, ...] = tuple(resolvers)
+
+        if not new_resolvers:
+            return self
+
+        known_names: set[str] = set(self._resolvers)
+        validated_resolvers: list[tuple[str, StreamResolver]] = []
+
+        for resolver in new_resolvers:
+            resolver_name: str = self._normalize_name(resolver.name)
+
+            if resolver_name in known_names:
+                raise ResolverAlreadyRegisteredError(
+                    resolver_name=resolver.name
+                )
+
+            known_names.add(resolver_name)
+            validated_resolvers.append(
+                (
+                    resolver_name,
+                    resolver
+                )
+            )
+
+        self._resolvers.update(validated_resolvers)
         return self
 
     def unregister(self, resolver_name: str) -> StreamResolver:
