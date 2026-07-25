@@ -467,7 +467,7 @@ class PlaybackQueue:
 
         self._ensure_not_empty()
 
-        normalized_first: int = self.normalize_index(first_index)
+        normalized_first: int = self._normalize_index(first_index)
         normalized_second: int = self._normalize_index(second_index)
 
         if normalized_first == normalized_second:

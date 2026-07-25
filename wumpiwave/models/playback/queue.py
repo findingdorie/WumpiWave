@@ -65,7 +65,7 @@ class QueueEntry:
                 The requester identifier is not positive, the request timestamp
                 lacks timezone information, or the start position is invalid.
         """
-        if self.requester_id is not None and self.requested_at <= 0:
+        if self.requester_id is not None and self.requester_id <= 0:
             raise ValueError("The requester identifier must be greater than zero.")
 
         if self.requested_at.tzinfo is None:
