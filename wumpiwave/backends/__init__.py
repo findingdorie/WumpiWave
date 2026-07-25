@@ -17,10 +17,12 @@ Methods:
 from __future__ import annotations
 
 from .base import BasePlaybackBackend
+from .discord import DiscordVoiceBackend
 from .ffmpeg import DiscordPCMSource, FFmpegAudioSourceFactory
 
 __all__: tuple[str, ...] = (
     "BasePlaybackBackend",
     "DiscordPCMSource",
+    "DiscordVoiceBackend",
     "FFmpegAudioSourceFactory",
 )
