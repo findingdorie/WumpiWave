@@ -12,7 +12,6 @@ Methods:
 
 from __future__ import annotations
 
-from . import QueryError
 from .base import WumpiWaveError
 
 
@@ -225,7 +224,7 @@ class ProviderRateLimitError(ProviderError):
         )
 
 
-class ProviderUnavailableError(QueryError):
+class ProviderUnavailableError(ProviderError):
     """Represents a metadata provider that is temporarily unavailable.
 
     Attributes:
