@@ -7,7 +7,6 @@ from enum import Enum
 
 from wumpiwave.models import MediaSource, MediaType, QueryType
 
-
 class MediaEnumTestCase(unittest.TestCase):
     """Test media source, type, and query enumerations."""
 
