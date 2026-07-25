@@ -33,12 +33,41 @@ class MediaStatistics:
             The provider-defined popularity score, when available.
 
     Methods:
-        None
+        __post_init__:
+            Validate the media statistics.
     """
 
     view_count: int | None = None
     like_count: int | None = None
     comment_count: int | None = None
     popularity_score: int | None = None
+
+    def __post_init__(self) -> None:
+        """Validate the media statistics.
+
+        Raises:
+            ValueError:
+                A counter is negative or the popularity score is outside
+                the supported range.
+        """
+
+        counters: tuple[tuple[str, int | None], ...] = (
+            ("view count", self.view_count),
+            ("like count", self.like_count),
+            ("comment count", self.comment_count)
+        )
+
+        for name, value in counters:
+            if value is not None and value < 0:
+                raise ValueError(f"The media statistics {name} cannot be negative.")
+
+        if (
+                self.popularity_score is not None
+                and not 0 <= self.popularity_score <= 100
+        ):
+            raise ValueError(
+                "The media statistics popularity score must be between "
+                "zero and one hundred."
+            )
 
 __all__: tuple[str, ...] = ("MediaStatistics",)
