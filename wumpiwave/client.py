@@ -211,11 +211,7 @@ class WumpiWaveClient:
             identifier=identifier,
             backend=backend,
             resolvers=self._resolvers,
-            dispatcher=(
-                PlaybackEventDispatcher()
-                if dispatcher is None
-                else dispatcher
-            ),
+            dispatcher=dispatcher,
             queue=queue,
             loop_mode=loop_mode,
             volume=volume,

@@ -39,13 +39,13 @@ from ..models import (
     TrackEndReason,
     TrackStartEvent,
 )
-from ..protocols import EventDispatcher, PlaybackBackend
+from ..protocols import EventDispatcher, MediaPlayer, PlaybackBackend
 from ..resolvers import ResolverRegistry
 from .queue import PlaybackQueue
 
 _logger: logging.Logger = logging.getLogger(__name__)
 
-class WumpiWavePlayer:
+class WumpiWavePlayer(MediaPlayer):
     """Coordinate media resolution, queue management, and audio playback.
 
     The player retrieves queue entries in playback order, resolves their media
