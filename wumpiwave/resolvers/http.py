@@ -162,7 +162,7 @@ class HTTPResolver(BaseStreamResolver):
         )
 
     @staticmethod
-    def _normalize_headers(self, headers: Mapping[str, str]) -> dict[str, str]:
+    def _normalize_headers(headers: Mapping[str, str]) -> dict[str, str]:
         """Normalize and validate configured HTTP headers.
 
         Args:
