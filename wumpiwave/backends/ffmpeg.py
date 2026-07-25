@@ -17,10 +17,11 @@ from __future__ import annotations
 from collections.abc import Iterable, Mapping
 from math import isfinite
 from shlex import join
-from typing import Any
+from typing import Self
 from urllib.parse import SplitResult, urlsplit
 
 from discord import FFmpegPCMAudio, PCMVolumeTransformer
+from ..filters import AudioFilterChain
 
 from ..models import PlayableSource
 
@@ -71,6 +72,7 @@ class FFmpegAudioSourceFactory:
         "_executable",
         "_extra_before_options",
         "_extra_options",
+        "_filter_chain",
         "_reconnect",
         "_reconnect_delay_max"
     )
@@ -86,6 +88,7 @@ class FFmpegAudioSourceFactory:
     _executable: str
     _extra_before_options: tuple[str, ...]
     _extra_options: tuple[str, ...]
+    _filter_chain: AudioFilterChain
     _reconnect: bool
     _reconnect_delay_max: int
 
@@ -95,8 +98,9 @@ class FFmpegAudioSourceFactory:
             executable: str = "ffmpeg",
             reconnect: bool = True,
             reconnect_delay_max: int = 5,
+            filter_chain: AudioFilterChain | None = None,
             extra_before_options: Iterable[str] = (),
-            extra_options: Iterable[str] = ()
+            extra_options: Iterable[str] = (),
     ) -> None:
         """Initialize an FFmpeg audio source factory.
 
@@ -135,6 +139,11 @@ class FFmpegAudioSourceFactory:
         self._executable = normalized_executable
         self._reconnect = reconnect
         self._reconnect_delay_max = reconnect_delay_max
+        self._filter_chain = (
+            AudioFilterChain()
+            if filter_chain is None
+            else self._validate_filter_chain(filter_chain)
+        )
         self._extra_before_options = self._normalize_arguments(
             extra_options,
             argument_group="after-input"
@@ -169,6 +178,26 @@ class FFmpegAudioSourceFactory:
         """
 
         return self._reconnect_delay_max
+
+    @property
+    def filter_chain(self) -> AudioFilterChain:
+        """Return the configured audio filter chain.
+
+        Returns:
+            The mutable filter chain used for newly created audio sources.
+        """
+
+        return self._filter_chain
+
+    @property
+    def filter_expression(self) -> str | None:
+        """Return the currently rendered audio filter expression.
+
+        Returns:
+            The FFmpeg filter expression, or ``None`` when no filters are active.
+        """
+
+        return self._filter_chain.render()
 
     @property
     def extra_before_options(self) -> tuple[str, ...]:
@@ -285,19 +314,54 @@ class FFmpegAudioSourceFactory:
 
         return join(arguments)
 
+    def set_filter_chain(
+            self,
+            filter_chain: AudioFilterChain | None,
+    ) -> Self:
+        """Replace the configured audio filter chain.
+
+        Args:
+            filter_chain:
+                The new filter chain, or ``None`` to use an empty chain.
+
+        Returns:
+            The source factory for chained configuration.
+
+        Raises:
+            TypeError:
+                The supplied value is not an audio filter chain.
+        """
+
+        self._filter_chain = (
+            AudioFilterChain()
+            if filter_chain is None
+            else self._validate_filter_chain(filter_chain)
+        )
+
+        return self
+
     def _build_options(self) -> str:
         """Build FFmpeg arguments placed after the input.
 
         Returns:
-            A shell-compatible argument string disabling non-audio streams and
-            containing configured additional arguments.
+            The complete FFmpeg after-input argument string.
         """
 
         arguments: list[str] = [
             "-vn",
             "-sn",
-            "-dn"
+            "-dn",
         ]
+        filter_expression: str | None = self._filter_chain.render()
+
+        if filter_expression is not None:
+            arguments.extend(
+                (
+                    "-af",
+                    filter_expression
+                )
+            )
+
         arguments.extend(self._extra_options)
 
         return join(arguments)
@@ -443,6 +507,31 @@ class FFmpegAudioSourceFactory:
             raise ValueError("The Discord playback volume must be between 0.0 and 2.0.")
 
         return float(volume)
+
+    @staticmethod
+    def _validate_filter_chain(
+            filter_chain: AudioFilterChain,
+    ) -> AudioFilterChain:
+        """Validate a possible audio filter chain.
+
+        Args:
+            filter_chain:
+                The value to validate.
+
+        Returns:
+            The validated audio filter chain.
+
+        Raises:
+            TypeError:
+                The supplied value is not an audio filter chain.
+        """
+
+        if not isinstance(filter_chain, AudioFilterChain):
+            raise TypeError(
+                "The FFmpeg filter chain must be an AudioFilterChain instance."
+            )
+
+        return filter_chain
 
 __all__: tuple[str, ...] = (
     "DiscordPCMSource",
