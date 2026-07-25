@@ -59,7 +59,7 @@ class EqualizerBand:
         if not isfinite(self.gain):
             raise ValueError("The equalizer gain must be finite.")
 
-        if not isinstance(self.width) or self.width <= 0.0:
+        if not isfinite(self.width) or self.width <= 0.0:
             raise ValueError("The equalizer width must be finite and greater than zero.")
 
     def render(self) -> str:
@@ -71,9 +71,9 @@ class EqualizerBand:
 
         return (
             f"equalizer="
-            f"f={self.frequency:g}"
+            f"f={self.frequency:g}:"
             f"t=q:"
-            f"w={self.width:g}"
+            f"w={self.width:g}:"
             f"g={self.gain:g}"
         )
 
@@ -386,7 +386,7 @@ class EqualizerFilter(BaseAudioFilter):
 
         return normalized_index
 
-__all__: tuple[EqualizerBand, ...] = (
+__all__: tuple[str, ...] = (
     "EqualizerBand",
     "EqualizerFilter"
 )
