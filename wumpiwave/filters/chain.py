@@ -88,7 +88,7 @@ class AudioFilterChain:
         self.extend(filters)
 
     @property
-    def name(self) -> tuple[str, ...]:
+    def names(self) -> tuple[str, ...]:
         """Return the names of all registered audio filters.
 
         Returns:
@@ -97,6 +97,7 @@ class AudioFilterChain:
 
         return tuple(audio_filter.name for audio_filter in self._filters.values())
 
+    @property
     def filters(self) -> tuple[BaseAudioFilter, ...]:
         """Return all registered audio filters.
 
