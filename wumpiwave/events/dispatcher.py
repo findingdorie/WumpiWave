@@ -14,10 +14,9 @@ from __future__ import annotations
 
 from asyncio import TaskGroup
 from collections.abc import Awaitable, Callable, Iterator
-from typing import Self, cast, Awaitable, Callable
+from typing import Self, cast
 
 from ..models import PlaybackEvent
-from ..resolvers import ResolverRegistry
 
 type _StoredEventListener = Callable[[PlaybackEvent], Awaitable[None]]
 
@@ -66,6 +65,16 @@ class PlaybackEventDispatcher:
         """Initialize an empty playback event dispatcher."""
 
         self._listeners = {}
+
+    @property
+    def event_types(self) -> tuple[type[PlaybackEvent], ...]:
+        """Return event classes with registered listeners.
+
+        Returns:
+            The event classes in their registration order.
+        """
+
+        return tuple(self._listeners)
 
     @property
     def listener_count(self) -> int:
@@ -117,7 +126,7 @@ class PlaybackEventDispatcher:
 
         return self
 
-    def _remove_listener[EventT: PlaybackEvent](self, event_type: type[EventT], listener: Callable[[EventT], Awaitable[None]]) -> bool:
+    def remove_listener[EventT: PlaybackEvent](self, event_type: type[EventT], listener: Callable[[EventT], Awaitable[None]]) -> bool:
         """Remove a previously registered event listener.
 
         Args:
